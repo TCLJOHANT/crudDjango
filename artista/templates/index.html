@@ -1,0 +1,91 @@
+{% load static %}
+
+<!doctype html>
+<html lang="es">
+<head>
+    <title>CRUD Django</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet"> <!--boxicons-->
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/form.css' %}">
+</head>
+<body>
+<main id="styleMain">
+    <div class="cont-form" id="formCrear">
+        <form action="{%url 'crear'%}" method="post">
+            {% csrf_token %}
+            <h1>Crear Artista</h1>
+            <i class='bx bx-exit salir' id="salir"></i>
+            <div>
+                <label for="name">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required class="form-control" autofocus>
+                <label for="mail">Genero:</label>
+                <input type="text" id="genero" name="genero" required class="form-control" autofocus>
+                <label for="bio">Descripción:</label>
+                <textarea rows="2" id="descripcion" name="descripcion" required onclick="" class="form-control"></textarea>
+            </div>
+            <button onclick="return confirm('¿Estás seguro de que deseas GUARDAR el registro?')" type="submit">Guardar</button>
+        </form>
+    </div>
+    <div class="container">
+        <h2 class="subtitle">Artistas<span class="point">.</span></h2>
+        <p class="copy__section">Aquí podrás gestionar los artistas</p>
+        <a href="#" class="cta crearBoton" id="crearBoton">Crear Artista</a>
+
+        <table class="tabla-borde">
+            <thead class="tabla-borde">
+            <tr class="tabla-borde">
+                <th>Nombre</th>
+                <th>Genero</th>
+                <th>Descripcion</th>
+                <th>Creado el:</th>
+                <th>Accion</th>
+            </tr>
+            </thead>
+            <tbody class="tabla-borde">
+            {% for artista in artistas %}
+            <tr class="tabla-borde">
+                <td>{{ artista.nombre }}</td>
+                <td>{{ artista.genero }}</td>
+                <td>{{ artista.descripcion }}</td>
+                <td>{{ artista.created_at }}</td>
+                <td>
+                    <a class="editar" href="{%url 'editar' artista.id%}">
+                        <i class='bx bxs-edit icono editar'></i>
+                    </a>
+                    <a class="eliminar" onclick="return confirm('¿Estás seguro de que deseas eliminar el registro?')"
+                       href="{%url 'eliminar' artista.id%}">
+                        <i class='bx bxs-trash-alt icono'></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+<footer class="footer">
+    <div class="contact">
+        <div class="item__contact">
+            <i class='bx bx-copyright contact__icon'></i>
+            <h3 class="contact__title">copyright 2023</h3>
+        </div>
+        <div class="item__contact">
+            <i class='bx bx-mail-send contact__icon'></i>
+            <h3 class="contact__title">loopstudios@gmail.com</h3>
+        </div>
+        <div class="item__contact">
+            <i class='bx bxs-edit-location contact__icon'></i>
+            <h3 class="contact__title">Popayán-Colombia</h3>
+        </div>
+        <div class="item__contact item__contact--red">
+            <i class='bx bxs-chat contact__icon'></i>
+            <a href="contacto.html" class="link-footer"><h3 class="contact__title">Contacta ahora</h3></a>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="{% static 'JS/form.js' %}"></script>
+</html>
