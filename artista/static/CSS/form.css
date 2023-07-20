@@ -21,9 +21,9 @@
 
   }
   form {
-     position: relative; 
+    position: relative; 
     width: 40%;
-    height: 60%;
+    max-height: 70%;
     padding: 10px 20px;
     background: #f4f7f8;
     border-radius: 4%;
