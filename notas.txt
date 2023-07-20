@@ -65,9 +65,6 @@
 recomendaciones
  recuerda agrega app en setting.py 
 
-datos de mongo atlas
-jachate7
-5iGDuI3iZ2Keof2k
 
 
 

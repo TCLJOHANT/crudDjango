@@ -1,3 +1,4 @@
+#AUTOR:TCL JOHAN +
 from django.urls import path
 from . import views # para poder acceder a vistas
 urlpatterns = [

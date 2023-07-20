@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime
 # Create your models here.
-
+#AUTOR:TCL JOHAN +
 class Artista(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=255)
